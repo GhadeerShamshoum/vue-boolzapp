@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: lightgray;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+header{
+    background-color: rgb(21, 168, 124);
+    height: 110px;
+}
+
+header,
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+i{
+    color: rgb(161, 155, 155);
+    margin: 0 5px;
+
+}
+
+/*bar top */
+
+.container_top{
+    height: 50px;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_top #top_left{
+    width: 35%;
+    height: 50px;
+    background-color: white;
+    border-right: 1px solid rgb(168, 166, 166);  
+}
+
+.container_top #top_right,
+.container_top #top_left{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.container_top #top_right{
+    width: 65%;
+    height: 50px;
+    background-color: white;
+}
+
+.avatar_img{
+    height: 50px;
+    margin: 10px;
+    
+}
+#avatarAndName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*main*/
+#containerMain{
+    width: 85%;
+    height: 600px;
+    position: fixed;
+    top: 80px;
+    display: flex;
+    
+}
+
+/*left side*/
+
+.mainLeft{
+    width: 35%;
+    height: 600px;
+    background-color: white;
+}
+
+#riceviNotifiche{
+    height: 70px;
+    background-color: rgb(145, 223, 253);
+    display: flex;
+    align-items: center;
+}
+
+.underLine{
+    text-decoration: underline;
+}
+
+#searchArea{
+    height: 30px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.search{
+    border: none;
+    width: 90%;
+}
+
+.fa-search{
+    width: 5%;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.gray{
+    background-color: lightgray;
+}
+
+.ultimoAccesso{
+    font-size: 10px;
+}
+
+/*right side*/
+.mainRight{
+    width: 65%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.messages{
+    height: 95%;
+    width: 100%;
+}
+
+.sendMsg{
+    height: 10%;
+    margin: auto;
+    width: 100%;
+    background-color: rgb(219, 216, 216);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageInput{
+    width: 1500px;
+    height: 40px;
+    border: none;
+    margin: 0 10px;
+
+}
