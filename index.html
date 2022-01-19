@@ -73,7 +73,11 @@
                     <div v-for='(element, index) in contacts' class="messages">
                         <div class="messageContainer">
                             <strong v-if='index==present' class="sentMessage">
-                                <span v-for='(message,indexMessage) in contacts[index].messages' >{{element.messages[indexMessage].text}}</span>
+                                <span v-for='(message,indexMessage) in contacts[index].messages' >
+                                    <div v-if="element.messages[indexMessage].status==='sent'" >
+                                        {{element.messages[indexMessage].text}} 
+                                    </div>
+                                </span>
                             </strong>
                         </div>
                         <div>
