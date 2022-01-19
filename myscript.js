@@ -115,7 +115,7 @@ let app = new Vue({
         },
         writeMessages: function(){
 
-        },
-        addMessage: fun
+        }
+        
     }
 })
