@@ -31,7 +31,8 @@
                             <img class="avatar_img" :src="element.avatar" alt="">
                             <div>
                                 <div><strong>{{contacts[index].name}}</strong></div>
-                                <div>ultimo accesso</div>
+                                <div class="ultimoAccesso">{{element.messages[element.messages.length-1].date}}</div>
+                               
                             </div>
                         </div>
                     </div>
@@ -61,20 +62,27 @@
                     <div v-for='(element, index) in contacts' class="content" @click="chosenContact(index)" :class="changeColor(index)">
                         <img class="avatar_img" :src="element.avatar" alt="">
                         <div>
-                            <div  ><strong>{{contacts[index].name}}</strong></div>
-                            <div class="ultimoAccesso">ultimo accesso</div>
+                            <div  ><strong>{{element.name}}</strong></div>
+                            <div class="ultimoAccesso">{{element.messages[element.messages.length-1].date}}</div>
+                            <p>{{element.messages[element.messages.length-1].text}}</p>
                         </div>
                     </div>
     
                 </div>
 
                 <div class="mainRight">
-                    <div class="messages">
+                    <div v-for='(message, indexMessage) in contacts' class="messages">
+                        <div class="messageContainer">
+                            <strong class="sentMessage">{{contacts[indexMessage].messages[0].text}}</strong>
+                        </div>
+                        <div>
+                            <strong class="receivedMessage">{{contacts[indexMessage].messages[1].text}}</strong>
+                        </div>
 
                     </div>
                     <div class="sendMsg">
                         <i class="far fa-smile"></i>
-                        <input class="messageInput" placeholder="Scrivi un messaggio" type="text">
+                        <input v-mod class="messageInput" placeholder="Scrivi un messaggio" type="text">
                         <i class="fas fa-microphone"></i>
                     </div>
 

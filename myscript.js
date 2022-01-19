@@ -115,13 +115,3 @@ let app = new Vue({
         }
     }
 })
-/*
-    function createIconContainer (icon){
-        const{family, prefix, color, name}=icon;
-            return`
-            <div class="box">
-                <i class="${family} ${prefix}${name}" style="color: ${color};"></i>
-                <div class="title">${name}</div>
-            </div>`
-    };
-    */
