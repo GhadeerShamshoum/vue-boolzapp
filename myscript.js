@@ -112,6 +112,10 @@ let app = new Vue({
                 return "active";
             }
             return "";   
-        }
+        },
+        writeMessages: function(){
+
+        },
+        addMessage: fun
     }
 })
