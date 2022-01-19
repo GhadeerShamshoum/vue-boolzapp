@@ -3,6 +3,7 @@ let app = new Vue({
 
     data: {
         present: -1,
+        writeMessages:'',
         contacts: [
             {
             name: 'Michele',
@@ -95,6 +96,7 @@ let app = new Vue({
     methods:{
 
         chosenContact: function(index){
+
             console.log(index)
             this.present = index;
         },
@@ -113,7 +115,17 @@ let app = new Vue({
             }
             return "";   
         },
-        writeMessages: function(){
+      
+        addMessage: function(present){
+            if(this.writeMessages.length === 0)return;
+            this.contacts[present].messages.push({
+                text: this.writeMessages,
+                status: 'sent'
+                
+                
+            })
+            this.writeMessages = '';
+            console.log('hjhjh');
 
         }
         

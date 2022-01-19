@@ -71,23 +71,25 @@
 
                 <div class="mainRight">
                     <div v-for='(element, index) in contacts' class="messages">
-                        <div class="messageContainer">
-                            <strong v-if='index==present' class="sentMessage">
-                                <span v-for='(message,indexMessage) in contacts[index].messages' >
-                                    <div v-if="element.messages[indexMessage].status==='sent'" >
-                                        {{element.messages[indexMessage].text}} 
-                                    </div>
-                                </span>
-                            </strong>
-                        </div>
                         <div>
-                            <strong class="receivedMessage"></strong>
-                        </div>
+                            <strong v-if='index==present' >
+                                <div v-for='(message,indexMessage) in contacts[index].messages' >
+                                    <div class="messageContainer">
+                                        <div v-if="element.messages[indexMessage].status==='sent'" class="sentMessage" >
+                                            {{element.messages[indexMessage].text}} 
+                                        </div>
+                                        <div v-else="element.messages[indexMessage].status==='received'" class="receivedMessage" >
+                                            {{element.messages[indexMessage].text}} 
+                                        </div>
+                                    </div>
+                                </div>
+                            </strong>
+                        </div>  
 
                     </div>
                     <div class="sendMsg">
                         <i class="far fa-smile"></i>
-                        <input v-model='writeMessages' keyup.enter='addMessage' class="messageInput" placeholder="Scrivi un messaggio" type="text">
+                        <input v-model='writeMessages' @keyup.enter='addMessage(present)' class="messageInput" placeholder="Scrivi un messaggio" type="text">
                         <i class="fas fa-microphone"></i>
                     </div>
 
