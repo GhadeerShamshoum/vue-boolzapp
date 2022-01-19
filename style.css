@@ -29,6 +29,15 @@ i{
 
 }
 
+.showContact.active{
+    display: block;
+}
+
+.showContact{
+    display: none;
+    width: 100%;
+}
+
 /*bar top */
 
 .container_top{
@@ -68,8 +77,9 @@ i{
 #avatarAndName{
     display: flex;
     align-items: center;
-    justify-content: center;
+    
 }
+
 
 /*main*/
 #containerMain{
@@ -124,7 +134,7 @@ i{
 }
 
 .gray{
-    background-color: lightgray;
+    background-color: rgb(235, 232, 232);
 }
 
 .ultimoAccesso{
@@ -139,7 +149,10 @@ i{
     flex-direction: column;
 
 }
-
+#top_right{
+    display: flex;
+    justify-content: space-between;
+}
 .messages{
     height: 95%;
     width: 100%;

@@ -2,7 +2,7 @@ let app = new Vue({
     el: "#app",
 
     data: {
-        present: 0,
+        present: -1,
         contacts: [
             {
             name: 'Michele',
@@ -94,15 +94,27 @@ let app = new Vue({
     },
     methods:{
 
-        image: function(){
-            console.log('aaaj')
-            `
-            "img/avatar${present}.png"`
-            return
+        chosenContact: function(index){
+            console.log(index)
+            this.present = index;
+        },
+        changeColor: function( indexContact){
             
+            if(indexContact == this.present){
+                return "gray";
+            }
+            return "";
+        },
+        
+        isPresent: function( indexContact){
+            console.log('active');
+            if(indexContact == this.present){
+                return "active";
+            }
+            return "";   
         }
-
     }
+})
 /*
     function createIconContainer (icon){
         const{family, prefix, color, name}=icon;
@@ -113,4 +125,3 @@ let app = new Vue({
             </div>`
     };
     */
-})
