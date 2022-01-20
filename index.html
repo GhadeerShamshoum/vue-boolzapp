@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="container">
         <!-- header -->
         <header>
             <!-- container top -->
@@ -59,33 +59,36 @@
                         <i class="fas fa-search"></i>
                         <input class="search" type="text" placeholder="Cerca oinizia una nuova chat">
                     </div>
-                    <div v-for='(element, index) in contacts' class="content" @click="chosenContact(index)" :class="changeColor(index)">
-                        <img class="avatar_img" :src="element.avatar" alt="">
-                        <div>
-                            <div><strong>{{element.name}}</strong></div>
-                            <div class="ultimoAccesso">{{element.messages[element.messages.length-1].date}}</div>
-                            <p>{{element.messages[element.messages.length-1].text}}</p>
+                    <div class="scrollbarContect">
+                        <div v-for='(element, index) in contacts' class="content" @click="chosenContact(index)" :class="changeColor(index)">
+                            <img class="avatar_img" :src="element.avatar" alt="">
+                            <div>
+                                <div><strong>{{element.name}}</strong></div>
+                                <div class="ultimoAccesso">{{element.messages[element.messages.length-1].date}}</div>
+                                <p>{{element.messages[element.messages.length-1].text}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="mainRight">
-                    <div v-for='(element, index) in contacts' class="messages">
-                        <div>
-                            <strong v-if='index==present' >
-                                <div v-for='(message,indexMessage) in contacts[index].messages' >
-                                    <div class="messageContainer">
-                                        <div v-if="element.messages[indexMessage].status==='sent'" class="sentMessage" >
-                                            {{element.messages[indexMessage].text}} 
-                                        </div>
-                                        <div v-else="element.messages[indexMessage].status==='received'" class="receivedMessage" >
-                                            {{element.messages[indexMessage].text}} 
+                    <div class="messagesContainerHight">
+                        <div v-for='(element, index) in contacts'>
+                            <div v-if='index==present'>
+                                <strong >
+                                    <div v-for='(message,indexMessage) in contacts[index].messages'  >
+                                        <div class="messageContainer">
+                                            <div v-if="element.messages[indexMessage].status==='sent'" class="sentMessage" >
+                                                {{element.messages[indexMessage].text}} 
+                                            </div>
+                                            <div v-else="element.messages[indexMessage].status==='received'" class="receivedMessage" >
+                                                {{element.messages[indexMessage].text}} 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </strong>
-                        </div>  
-
+                                </strong>
+                            </div>  
+                        </div>
                     </div>
                     <div class="sendMsg">
                         <i class="far fa-smile"></i>
