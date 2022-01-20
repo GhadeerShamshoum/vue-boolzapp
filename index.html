@@ -47,6 +47,7 @@
         <!-- main -->
         <main>
             <div id="containerMain">
+                <!-- main left -->
                 <div class="mainLeft">
                     <div id="riceviNotifiche">
                         <i class="far fa-bell-slash"></i>
@@ -70,13 +71,14 @@
                         </div>
                     </div>
                 </div>
+                <!-- main right -->
 
                 <div class="mainRight">
                     <div class="messagesContainerHight">
                         <div v-for='(element, index) in contacts'>
                             <div v-if='index==present'>
                                 <strong >
-                                    <div v-for='(message,indexMessage) in contacts[index].messages'  >
+                                    <div v-for='(message,indexMessage) in contacts[index].messages' :class="replay" >
                                         <div class="messageContainer">
                                             <div v-if="element.messages[indexMessage].status==='sent'" class="sentMessage" >
                                                 {{element.messages[indexMessage].text}} 
