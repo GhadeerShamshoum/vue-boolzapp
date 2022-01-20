@@ -82,6 +82,9 @@ i{
     align-items: center;
     
 }
+.nameAndIconContainer{
+    width: 300px;
+}
 
 
 /*main*/
@@ -112,7 +115,7 @@ i{
 }
 
 #searchArea{
-    height: 30px;
+    height: 40px;
     width: 100%;
     background-color: white;
     display: flex;
@@ -121,7 +124,13 @@ i{
 
 .search{
     border: none;
+    height: 40px;
     width: 90%;
+}
+
+
+.content.disappear{
+    display: none;
 }
 
 .fa-search{
@@ -189,25 +198,25 @@ i{
 .sentMessage{
     float: right;
     background-color: rgb(207, 247, 207);
-    min-width: 100px;
-    max-width: 400px;
     margin-right: 100px;
-    border-radius: 5px;
-    padding: 5px;
-    word-break:break-all;
 
 }
+
+.sentMessage,
+.receivedMessage{
+    min-width: 100px;
+    max-width: 400px;
+    margin-top: 5px;
+    border-radius: 5px;
+    padding: 15px;
+    word-break:break-all;
+}
+
 
 .receivedMessage{
     float: left;
     background-color: rgb(241, 247, 241);
-    min-width: 100px;
-    max-width: 400px;
     margin-left: 100px;
-    border-radius: 5px;
-    padding: 5px;
-    word-break:break-all;
-
 }
 
 .messageContainer{

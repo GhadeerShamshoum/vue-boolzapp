@@ -130,7 +130,7 @@ let app = new Vue({
 
         },
 
-       replay: function(present){
+       replay: function(){
            this.contacts[this.present].messages.push({
                date: '',
                text: 'ok',
@@ -138,8 +138,25 @@ let app = new Vue({
                  
             })
             
-       }
-        
-        
+       },
+       
+       
+       filterNames: function(){
+           for(i = 0; i<this.contacts.length; i++){
+               if(!this.contacts[i].name.toLowerCase().includes(this.search.toLowerCase())){
+                    this.contacts[i].visible = false;
+                    console.log('false');
+                   
+                }else{
+                    this.contacts[i].visible = true;
+                }  
+            }
+        },
+        visibility: function(index){
+            if(!this.contacts[index].visible === true)
+                return 'disappear'
+            
+        }
+
     }
 })
