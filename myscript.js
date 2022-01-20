@@ -4,6 +4,7 @@ let app = new Vue({
     data: {
         present: -1,
         writeMessages:'',
+        search: '',
         contacts: [
             {
             name: 'Michele',
@@ -119,15 +120,26 @@ let app = new Vue({
         addMessage: function(present){
             if(this.writeMessages.length === 0)return;
             this.contacts[present].messages.push({
+                date: '',
                 text: this.writeMessages,
-                status: 'sent'
-                
+                status: 'sent'  
                 
             })
             this.writeMessages = '';
-            console.log('hjhjh');
+            setTimeout(this.replay, 1000);
 
-        }
+        },
+
+       replay: function(present){
+           this.contacts[this.present].messages.push({
+               date: '',
+               text: 'ok',
+               status: 'received',
+                 
+            })
+            
+       }
+        
         
     }
 })
