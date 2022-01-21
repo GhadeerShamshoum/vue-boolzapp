@@ -6,10 +6,17 @@ let app = new Vue({
         presentMessage: null,
         writeMessages:'',
         search: '',
+
+        user:
+            {
+            name: 'Ghadeer',
+            avatar: '_5',
+            },
+
         contacts: [
             {
             name: 'Michele',
-            avatar: 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/b666f811889067.562541eff3013.png',
+            avatar: '_1',
             visible: true,
             messages: [
                 {
@@ -32,7 +39,7 @@ let app = new Vue({
 
             {
             name: 'Fabio',
-            avatar: 'https://raw.githubusercontent.com/obliviate-dan/Login-Form/master/img/avatar.png',
+            avatar: '_2',
             visible: true,
             messages: [
                 {
@@ -55,7 +62,7 @@ let app = new Vue({
             
             {
             name: 'Samuele',
-            avatar: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector-PNG-Clipart.png',
+            avatar: '_3',
             visible: true,
             messages: [
                 {
@@ -78,7 +85,7 @@ let app = new Vue({
             
             {
             name: 'Luisa',
-            avatar: 'https://www.pngarts.com/files/5/User-Avatar-PNG-Free-Download.png',
+            avatar: '_4',
             visible: true,
             messages: [
                 {
@@ -127,6 +134,7 @@ let app = new Vue({
                 status: 'sent' 
                 
             })
+            this.scrollToEnd;
             this.writeMessages = '';
             setTimeout(this.replay, 1000);
 
@@ -171,11 +179,9 @@ let app = new Vue({
         
 
 
-        scrollToEnd(){
-            const container = document.querySelector('.messagesContainerHight');
-            const scrollHight = container.scrollHight;
-            container.scrollTop = scrollHight;
-            console.log(scrollHight)
+        scrollToEnd: function(){
+            const container = document.querySelector('.scrollbar');
+            container.scrollTop = container.scrollHeight;
 
         }
 

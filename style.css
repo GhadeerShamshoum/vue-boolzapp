@@ -33,6 +33,11 @@ i{
 
 }
 
+img{
+    height: 15px;
+    border-radius: 50%;
+}
+
 .showContact.active{
     display: block;
 }
@@ -189,24 +194,32 @@ i{
 }
 
 
+
+/* input-to write messages */
 .sendMsg{
     height: 15%;
     margin: auto;
     width: 100%;
-    background-color: rgb(224, 217, 217);
+    background-color: rgb(223, 219, 219);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* input-to write messages */
+.smile,
+.microphone{
+    width: 5%;
+    text-align: center;
+}
+
 .messageInput{
-    width: 1500px;
+    width: 90%;
     height: 70%;
     border: none;
     border-radius: 5px;
-    margin: 0 10px;
+    padding: 5px;
 }
+
 
 /* messages sent/received */
 .sentMessage{
@@ -295,11 +308,11 @@ ul li:hover{
 
 .messagesContainerHight{
     height: 85%;
-    overflow-y: scroll;
-    background-image: url( );
+    background-image: url(https://cdn.wallpapersafari.com/61/64/3QBHDv.png );
     background-size: cover;
-    object-fit: contain;
-
+    object-fit:cover;
+    overflow-y: scroll;
 }
+
 
 
