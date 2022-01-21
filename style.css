@@ -94,7 +94,7 @@ img{
 /*main*/
 #containerMain{
     width: 85%;
-    max-height: 500px;
+    height: 500px;
     display: flex;
     
 }
@@ -103,7 +103,7 @@ img{
 
 .mainLeft{
     width: 35%;
-    max-height: 500px;
+    height: 100%;
     background-color: white;
 }
 
@@ -188,9 +188,16 @@ img{
 
 .mainRight{
     width: 65%;
-    height: 400px;
+    height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.connectYourPhonePhoto{
+    height: 100%;
+    width: 100%;
+    border-radius: 0%;
+    
 }
 
 
@@ -309,9 +316,11 @@ ul li:hover{
 .messagesContainerHight{
     height: 85%;
     background-image: url(https://cdn.wallpapersafari.com/61/64/3QBHDv.png );
-    background-size: cover;
+    background-size: 30%;
+    background-repeat: repeat;
     object-fit:cover;
     overflow-y: scroll;
+    position: relative;
 }
 
 

@@ -102,6 +102,9 @@ let app = new Vue({
             },
         ]
     },
+    updated: function(){
+        this.scrollToEnd()
+    },
     
     methods:{
 
@@ -169,21 +172,20 @@ let app = new Vue({
 
         tooltiptext: function(indexMessage){
             this.presentMessage=indexMessage;
-            console.log(indexMessage)
+            console.log(indexMessage);
         },
 
+        
         deleteMessage: function(indexMessage){
             this.contacts[this.present].messages.splice(indexMessage, 1);
 
         },
-        
-
 
         scrollToEnd: function(){
-            const container = document.querySelector('.scrollbar');
+            const container = document.querySelector('.messagesContainerHight');
             container.scrollTop = container.scrollHeight;
-
-        }
+            
+        }, 
 
     },
     

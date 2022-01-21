@@ -78,7 +78,8 @@
 
                 <div class="mainRight">
                     <div class="messagesContainerHight">
-                        <div class="scrollbar" v-for='(element, index) in contacts'>
+                        <img v-if='present == null' class="connectYourPhonePhoto" src="img/whatsapp.png" alt="">
+                        <div v-for='(element, index) in contacts'>
                             <div v-if='index==present'>
                                 <strong >
                                     <div v-for='(message,indexMessage) in contacts[index].messages' :class="replay" >
