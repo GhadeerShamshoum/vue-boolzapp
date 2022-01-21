@@ -3,6 +3,7 @@ let app = new Vue({
 
     data: {
         present: null,
+        presentMessage: null,
         writeMessages:'',
         search: '',
         contacts: [
@@ -159,18 +160,11 @@ let app = new Vue({
         },
 
         tooltiptext: function(indexMessage){
-            this.present=indexMessage
+            this.presentMessage=indexMessage;
             console.log(indexMessage)
         },
         
-        showTooltiptext: function(indexMessage){
-            if(indexMessage == this.present){
-                return "show";
-            }
-            return "";   
-        },
 
-        
 
         scrollToEnd(){
             const container = document.querySelector('.messagesContainerHight');
