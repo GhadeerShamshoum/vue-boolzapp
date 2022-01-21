@@ -268,13 +268,18 @@ i{
   }
 
   /* Show the tooltip text when you mouse over the tooltip container */
-  .tooltiptext.show {
+.tooltiptext.show {
     visibility: visible;
   }
 
-  ul li{
-      list-style: none;
+ul li{
+    list-style: none;
   }
+
+ul li:hover{
+    background-color: rgb(240, 234, 234);
+
+}
  
 
 .sentMessage:hover .fa-angle-down,

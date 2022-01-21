@@ -163,6 +163,11 @@ let app = new Vue({
             this.presentMessage=indexMessage;
             console.log(indexMessage)
         },
+
+        deleteMessage: function(indexMessage){
+            this.contacts[this.present].messages.splice(indexMessage, 1);
+
+        },
         
 
 

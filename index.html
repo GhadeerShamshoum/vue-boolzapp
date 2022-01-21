@@ -87,7 +87,7 @@
                                                 <i class="fas fa-angle-down" @click='tooltiptext(indexMessage)' ></i>
                                                 <ul class="tooltiptext" :class="{show:indexMessage==presentMessage}">
                                                     <li>Options</li>
-                                                    <li>Delete</li>
+                                                    <li @click='deleteMessage(indexMessage)'>Delete</li>
                                                 </ul>
                                                 {{element.messages[indexMessage].text}} 
                                             </div>
@@ -95,7 +95,7 @@
                                                 <i class="fas fa-angle-down" @click='tooltiptext(indexMessage)' ></i>
                                                 <ul class="tooltiptext" :class="{show:indexMessage==presentMessage}">
                                                     <li>Options</li>
-                                                    <li>Delete</li>
+                                                    <li @click='deleteMessage(indexMessage)'>Delete</li>
                                                 </ul>
                                                 {{element.messages[indexMessage].text}} 
                                             </div>
