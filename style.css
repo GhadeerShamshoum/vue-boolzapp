@@ -16,7 +16,7 @@ body{
 }
 
 header{
-    height: 60px;
+    height: 80px;
     margin-top: 60px;
 }
 
@@ -59,7 +59,7 @@ i{
 
 .container_top #top_right,
 .container_top #top_left{
-    height: 60px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -68,7 +68,6 @@ i{
 
 .container_top #top_right{
     width: 65%;
-    height: 60px;
     background-color: white;
 }
 
@@ -103,6 +102,21 @@ i{
     background-color: white;
 }
 
+.bellBackgroudColor{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0 20px;
+
+}
+
+.fa-bell-slash{
+    line-height: 50px;
+    font-size: 35px;
+    color: rgb(145, 223, 253);
+}
+
 #riceviNotifiche{
     height: 70px;
     background-color: rgb(145, 223, 253);
@@ -121,6 +135,7 @@ i{
     display: flex;
     align-items: center;
 }
+
 
 .search{
     border: none;
@@ -161,18 +176,17 @@ i{
     font-size: 10px;
 }
 
+
+
 /*right side*/
+
+
 .mainRight{
     width: 65%;
     height: 400px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-
-}
-#top_right{
-    display: flex;
-    justify-content: space-between;
+    margin-right: 10px;
 }
 
 
@@ -180,13 +194,13 @@ i{
     height: 15%;
     margin: auto;
     width: 100%;
-    background-color: rgb(201, 194, 194);
+    background-color: rgb(224, 217, 217);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-
+/* input-to write messages */
 .messageInput{
     width: 1500px;
     height: 70%;
@@ -195,6 +209,7 @@ i{
     margin: 0 10px;
 }
 
+/* messages sent/received */
 .sentMessage{
     float: right;
     background-color: rgb(207, 247, 207);
@@ -204,12 +219,13 @@ i{
 
 .sentMessage,
 .receivedMessage{
-    min-width: 100px;
+    min-width: 250px;
     max-width: 400px;
-    margin-top: 5px;
+    margin-top: 15px;
     border-radius: 5px;
     padding: 15px;
     word-break:break-all;
+    cursor: pointer;
 }
 
 
@@ -217,6 +233,22 @@ i{
     float: left;
     background-color: rgb(241, 247, 241);
     margin-left: 100px;
+}
+
+.containerAngleDown{
+    width: 5px;
+    display: inline;
+}
+.fa-angle-down{
+    float: right;
+    display: none;
+
+}
+
+
+.sentMessage:hover .fa-angle-down,
+.receivedMessage:hover .fa-angle-down{
+    display: block;
 }
 
 .messageContainer{
@@ -228,6 +260,7 @@ i{
 .messagesContainerHight{
     height: 85%;
     overflow-y: scroll;
+
 }
 
 

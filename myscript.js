@@ -94,6 +94,7 @@ let app = new Vue({
             },
         ]
     },
+    
     methods:{
 
         chosenContact: function(index){
@@ -122,7 +123,7 @@ let app = new Vue({
             this.contacts[present].messages.push({
                 date: '',
                 text: this.writeMessages,
-                status: 'sent'  
+                status: 'sent' 
                 
             })
             this.writeMessages = '';
@@ -136,8 +137,7 @@ let app = new Vue({
                text: 'ok',
                status: 'received',
                  
-            })
-            
+            })       
        },
        
        
@@ -145,18 +145,27 @@ let app = new Vue({
            for(i = 0; i<this.contacts.length; i++){
                if(!this.contacts[i].name.toLowerCase().includes(this.search.toLowerCase())){
                     this.contacts[i].visible = false;
-                    console.log('false');
-                   
+                    console.log('false');  
                 }else{
                     this.contacts[i].visible = true;
                 }  
             }
         },
+
         visibility: function(index){
             if(!this.contacts[index].visible === true)
                 return 'disappear'
             
+        },
+
+        scrollToEnd(){
+            const container = document.querySelector('.messagesContainerHight');
+            const scrollHight = container.scrollHight;
+            container.scrollTop = scrollHight;
+            console.log(scrollHight)
+
         }
 
-    }
+    },
+    
 })

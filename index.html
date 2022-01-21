@@ -51,7 +51,9 @@
                 <!-- main left -->
                 <div class="mainLeft">
                     <div id="riceviNotifiche">
-                        <i class="far fa-bell-slash"></i>
+                        <div class="bellBackgroudColor">
+                            <i class="far fa-bell-slash"></i>
+                        </div>
                         <div>
                             <div><strong>Ricevi notifiche di nuovi messaggi</strong></div>
                             <div class="underLine">Attiva notifiche descktop</div>
@@ -82,9 +84,11 @@
                                     <div v-for='(message,indexMessage) in contacts[index].messages' :class="replay" >
                                         <div class="messageContainer">
                                             <div v-if="element.messages[indexMessage].status==='sent'" class="sentMessage" >
+                                                <i class="fas fa-angle-down"></i>
                                                 {{element.messages[indexMessage].text}} 
                                             </div>
                                             <div v-else="element.messages[indexMessage].status==='received'" class="receivedMessage" >
+                                                <i class="fas fa-angle-down"></i>
                                                 {{element.messages[indexMessage].text}} 
                                             </div>
                                         </div>
