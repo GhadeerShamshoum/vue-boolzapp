@@ -2,7 +2,7 @@ let app = new Vue({
     el: "#app",
 
     data: {
-        present: -1,
+        present: null,
         writeMessages:'',
         search: '',
         contacts: [
@@ -157,6 +157,20 @@ let app = new Vue({
                 return 'disappear'
             
         },
+
+        tooltiptext: function(indexMessage){
+            this.present=indexMessage
+            console.log(indexMessage)
+        },
+        
+        showTooltiptext: function(indexMessage){
+            if(indexMessage == this.present){
+                return "show";
+            }
+            return "";   
+        },
+
+        
 
         scrollToEnd(){
             const container = document.querySelector('.messagesContainerHight');

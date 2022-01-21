@@ -84,7 +84,11 @@
                                     <div v-for='(message,indexMessage) in contacts[index].messages' :class="replay" >
                                         <div class="messageContainer">
                                             <div v-if="element.messages[indexMessage].status==='sent'" class="sentMessage" >
-                                                <i class="fas fa-angle-down"></i>
+                                                <i class="fas fa-angle-down" @click='tooltiptext = true' :class="showTooltiptext(indexMessage)"></i>
+                                                <ul v-if='tooltiptext = true' class="tooltiptext">
+                                                    <li>Options</li>
+                                                    <li>Delete</li>
+                                                </ul>
                                                 {{element.messages[indexMessage].text}} 
                                             </div>
                                             <div v-else="element.messages[indexMessage].status==='received'" class="receivedMessage" >
