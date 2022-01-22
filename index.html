@@ -56,7 +56,7 @@
                         </div>
                         <div>
                             <div><strong>Ricevi notifiche di nuovi messaggi</strong></div>
-                            <div class="underLine">Attiva notifiche descktop</div>
+                            <a class="underLine">Attiva notifiche descktop</a>
                         </div>
                     </div>
                     <div id="searchArea">
@@ -64,12 +64,14 @@
                         <input class="search" type="text" placeholder="Cerca oinizia una nuova chat" @keyUp='filterNames' v-model='search'>
                     </div>
                     <div class="scrollbarContect">
-                        <div v-for='(element, index) in contacts' class="content" :class="visibility(index)" @click="chosenContact(index)" :class="changeColor(index)">
-                            <img class="avatar_img" :src="'img/avatar'+element.avatar+'.png'" alt="">
-                            <div>
-                                <div><strong>{{element.name}}</strong></div>
-                                <div class="ultimoAccesso">{{element.messages[element.messages.length-1].date}}</div>
-                                <p>{{element.messages[element.messages.length-1].text}}</p>
+                        <div v-for='(element, index) in contacts' :class="visibility(index)" class="content" @click="chosenContact(index)" >
+                            <div class="contactsContainer" :class="changeColor(index)">
+                                <img class="avatar_img" :src="'img/avatar'+element.avatar+'.png'" alt="">
+                                <div class="nameAndLastMessage">
+                                    <strong>{{element.name}}</strong>
+                                    <p>{{element.messages[element.messages.length-1].text}}</p>
+                                </div>
+                                <div class="lastSeen">{{element.messages[element.messages.length-1].date}}</div>
                             </div>
                         </div>
                     </div>
@@ -91,6 +93,10 @@
                                                     <li @click='deleteMessage(indexMessage)'>Delete</li>
                                                 </ul>
                                                 {{element.messages[indexMessage].text}}
+                                                <div class="dateAndStatus">
+                                                    {{element.messages[indexMessage].date}}
+                                                    {{element.messages[indexMessage].status}}
+                                                </div>
                                                 
                                             </div>
                                             <div v-else="element.messages[indexMessage].status==='received'" class="receivedMessage" >
@@ -100,6 +106,10 @@
                                                     <li @click='deleteMessage(indexMessage)'>Delete</li>
                                                 </ul>
                                                 {{element.messages[indexMessage].text}} 
+                                                <div class="dateAndStatus">
+                                                    {{element.messages[indexMessage].date}}
+                                                    {{element.messages[indexMessage].status}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
