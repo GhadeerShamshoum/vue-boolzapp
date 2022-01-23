@@ -11,6 +11,13 @@ body{
     font-family: 'Source Sans Pro', sans-serif;
     height: 100vh;
 }
+
+.backgroundColorNM.nightMode{
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgb(21, 168, 124) , rgb(16, 17, 17) 20vh, rgb(16, 17, 17)100%); 
+
+}
+
 .container{
     width: 85%;
     min-height: 200px;
@@ -18,10 +25,12 @@ body{
     box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
 }
 
+
 header{
     height: 80px;
     margin-top: 60px;
 }
+
 
 header,
 main{
@@ -34,6 +43,7 @@ i{
     color: rgb(161, 155, 155);
     margin: 0 5px;
 }
+
 
 p{
     font-size: 10px;
@@ -53,6 +63,63 @@ img{
     width: 100%;
 }
 
+/* toggle switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 20px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
 /*bar top */
 
 .container_top{
@@ -64,22 +131,27 @@ img{
 
 .container_top #top_left{
     width: 35%;
-    background-color: white;
     border-right: 1px solid rgb(168, 166, 166);  
 }
 
 .container_top #top_right,
 .container_top #top_left{
+    background-color: white;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+.container_top #top_right.nightMode,
+.container_top #top_left.nightMode{
+    background-color: rgb(30, 53, 45);
+    color:white;
+}
+
 
 .container_top #top_right{
     width: 65%;
-    background-color: white;
 }
 
 .avatar_img{
@@ -105,12 +177,28 @@ img{
     
 }
 
+#containerMain.nightMode{
+    background-color: black;
+}
+
 /*left side*/
 
 .mainLeft{
     width: 35%;
     height: 100%;
     background-color: white;
+}
+
+.mainLeft.nightMode,
+#searchArea.nightMode{
+    background-color: rgb(24, 29, 29);
+    color:white;
+}
+
+input.nightMode{
+    background-color: rgb(28, 44, 44);
+    border-radius: 20px;
+    color:white;
 }
 
 .bellBackgroudColor{
@@ -153,6 +241,7 @@ img{
 }
 
 
+
 .search{
     border: none;
     height: 40px;
@@ -182,9 +271,19 @@ img{
 .contactsContainer{
     width: 100%;
     display: flex;
-    position: relative;
-    
+    position: relative;   
 }
+
+.contactsContainer.nightMode{
+    background-color: black;
+    color:white;
+}
+
+.nameAndLastMessage{
+    border-bottom:1px solid rgba(168, 167, 167, 0.37); 
+    width: 360px;
+}
+ 
 
 .gray{
     background-color: rgb(235, 232, 232);
@@ -216,10 +315,25 @@ img{
 }
 
 .connectYourPhonePhoto{
+    background-image: url(img/whatsapp.png);
+}
+
+.connectYourPhonePhoto.nightMode,
+.connectYourPhonePhoto{
+    border-radius: 0%;
     height: 100%;
     width: 100%;
-    border-radius: 0%;
+    background-size: cover;
+    background-repeat: repeat;
+    object-fit:cover;
+    background-repeat: repeat; 
     
+
+}
+
+.connectYourPhonePhoto.nightMode{
+    background-image: url(img/nightMode.png);
+
 }
 
 
@@ -233,6 +347,12 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.sendMsg.nightMode{
+    background-color: rgb(21, 27, 27);
+    color:white;
+
 }
 
 .smile,
@@ -277,6 +397,21 @@ img{
 
 }
 
+.sentMessage.nightMode,
+.receivedMessage.nightMode{
+    color: black;
+}
+
+.sentMessage ::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 20px;
+    height: 20px;
+    background-color: linear-gradient(135deg, rgb(207, 247, 207) 0%, rgb(207, 247, 207) 50%, transparent 50%, transparent );
+}
+
 
 .receivedMessage{
     float: left;
@@ -306,6 +441,7 @@ img{
     color: rgb(3, 3, 3);
     text-align: center;
     padding: 10px 0;
+    margin: 10 0;
     border-radius: 6px;
     /* Position the tooltip text - see examples below! */
     position: absolute;
@@ -340,6 +476,7 @@ ul li:hover{
     margin-bottom: 25px;
 }
 
+
 .messagesContainerHight{
     height: 88%;
     background-image: url(https://cdn.wallpapersafari.com/61/64/3QBHDv.png );
@@ -348,6 +485,10 @@ ul li:hover{
     object-fit:cover;
     overflow-y: scroll;
     position: relative;
+}
+
+.messagesContainerHight.nightMode{
+    background-image: url(https://i.redd.it/ts7vuoswhwf41.jpg);
 }
 
 .dateAndStatus{

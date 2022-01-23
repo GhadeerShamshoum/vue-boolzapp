@@ -9,126 +9,135 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="app" class="container">
-        <!-- header -->
-        <header>
-            <!-- container top -->
-            <div class="container_top">
-                <div id="top_left">
-                    <div id="avatarAndName">
-                        <img class="avatar_img" :src="'img/avatar'+user.avatar+'.png'" alt="">
-                        <span><strong>{{user.name}}</strong></span>
-                    </div>
-                    <div class="container_icons">
-                        <i class="fas fa-circle-notch"></i>
-                        <i class="fas fa-comment-alt"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
-                </div>
-                <div id="top_right">
-                    <div class="nameAndIconContainer">
-                        <div v-for='(element, index) in contacts' class="showContact" :class="isPresent(index)" >
-                            <div id="avatarAndName"> 
-                                <img class="avatar_img" :src="'img/avatar'+element.avatar+'.png'" alt="">
-                                <div>
-                                    <div><strong>{{contacts[index].name}}</strong></div>
-                                    <div class="ultimoAccesso">{{element.messages[element.messages.length-1].date}}</div> 
-                                </div>
+    <div id="app">
+        <div class="backgroundColorNM" :class="nightMode()">
+            <div class="container" >
+                
+                <!-- header -->
+                <header>
+                    <!-- container top -->
+                    <div class="container_top">
+                        <div id="top_left" :class="nightMode()">
+                            <div id="avatarAndName">
+                                <img class="avatar_img" :src="'img/avatar'+user.avatar+'.png'" alt="">
+                                <span><strong>{{user.name}}</strong></span>
+                            </div>
+                            <div class="container_icons">
+                                <label class="switch">
+                                    <input type="checkbox" @click='nightModeButton'>
+                                    <span class="slider"></span>
+                                </label>
+                                <i class="fas fa-circle-notch"></i>
+                                <i class="fas fa-comment-alt"></i>
+                                <i class="fas fa-ellipsis-v"></i>
                             </div>
                         </div>
-                    </div>
-                    <div class="container_icons">
-                        <i class="fas fa-search"></i>
-                        <i class="fas fa-paperclip"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- main -->
-        <main>
-            <div id="containerMain">
-                <!-- main left -->
-                <div class="mainLeft">
-                    <div id="riceviNotifiche">
-                        <div class="bellBackgroudColor">
-                            <i class="far fa-bell-slash"></i>
-                        </div>
-                        <div>
-                            <div><strong>Ricevi notifiche di nuovi messaggi</strong></div>
-                            <a class="underLine">Attiva notifiche descktop</a>
-                        </div>
-                    </div>
-                    <div id="searchArea">
-                        <i class="fas fa-search"></i>
-                        <input class="search" type="text" placeholder="Cerca oinizia una nuova chat" @keyUp='filterNames' v-model='search'>
-                    </div>
-                    <div class="scrollbarContect">
-                        <div v-for='(element, index) in contacts' :class="visibility(index)" class="content" @click="chosenContact(index)" >
-                            <div class="contactsContainer" :class="changeColor(index)">
-                                <img class="avatar_img" :src="'img/avatar'+element.avatar+'.png'" alt="">
-                                <div class="nameAndLastMessage">
-                                    <strong>{{element.name}}</strong>
-                                    <p>{{element.messages[element.messages.length-1].text}}</p>
-                                </div>
-                                <div class="lastSeen">{{element.messages[element.messages.length-1].date}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- main right -->
-
-                <div class="mainRight">
-                    <div class="messagesContainerHight">
-                        <img v-if='present == null' class="connectYourPhonePhoto" src="img/whatsapp.png" alt="">
-                        <div v-for='(element, index) in contacts'>
-                            <div v-if='index==present'>
-                                <strong >
-                                    <div v-for='(message,indexMessage) in contacts[index].messages' :class="replay" >
-                                        <div class="messageContainer">
-                                            <div v-if="element.messages[indexMessage].status==='sent'" class="sentMessage" >
-                                                <i class="fas fa-angle-down" @click='tooltiptext(indexMessage)' ></i>
-                                                <ul class="tooltiptext" :class="{show:indexMessage==presentMessage}">
-                                                    <li>Options</li>
-                                                    <li @click='deleteMessage(indexMessage)'>Delete</li>
-                                                </ul>
-                                                {{element.messages[indexMessage].text}}
-                                                <div class="dateAndStatus">
-                                                    {{element.messages[indexMessage].date}}
-                                                    {{element.messages[indexMessage].status}}
-                                                </div>
-                                                
-                                            </div>
-                                            <div v-else="element.messages[indexMessage].status==='received'" class="receivedMessage" >
-                                                <i class="fas fa-angle-down" @click='tooltiptext(indexMessage)' ></i>
-                                                <ul class="tooltiptext" :class="{show:indexMessage==presentMessage}">
-                                                    <li>Options</li>
-                                                    <li @click='deleteMessage(indexMessage)'>Delete</li>
-                                                </ul>
-                                                {{element.messages[indexMessage].text}} 
-                                                <div class="dateAndStatus">
-                                                    {{element.messages[indexMessage].date}}
-                                                    {{element.messages[indexMessage].status}}
-                                                </div>
-                                            </div>
+                        <div id="top_right" :class="nightMode()">
+                            <div class="nameAndIconContainer">
+                                <div v-for='(element, index) in contacts' class="showContact" :class="isPresent(index)" >
+                                    <div id="avatarAndName"> 
+                                        <img class="avatar_img" :src="'img/avatar'+element.avatar+'.png'" alt="">
+                                        <div>
+                                            <div><strong>{{contacts[index].name}}</strong></div>
+                                            <div class="ultimoAccesso">{{element.messages[element.messages.length-1].date}}</div> 
                                         </div>
                                     </div>
-                                </strong>
-                            </div>  
+                                </div>
+                            </div>
+                            <div class="container_icons">
+                                <i class="fas fa-search"></i>
+                                <i class="fas fa-paperclip"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
                         </div>
                     </div>
-                    <div class="sendMsg">
-                        <div class="smile"><i class="far fa-smile"></i></div>
-                        <input v-model='writeMessages' @keyup.enter='addMessage(present)' class="messageInput" placeholder="Scrivi un messaggio" type="text">
-                        <div class="microphone"><i class="fas fa-microphone"></i></div>
+                </header>
+                <!-- main -->
+                <main>
+                    <div id="containerMain" :class="nightMode()">
+                        <!-- main left -->
+                        <div class="mainLeft" :class="nightMode()">
+                            <div id="riceviNotifiche">
+                                <div class="bellBackgroudColor">
+                                    <i class="far fa-bell-slash"></i>
+                                </div>
+                                <div>
+                                    <div><strong>Ricevi notifiche di nuovi messaggi</strong></div>
+                                    <a class="underLine">Attiva notifiche descktop</a>
+                                </div>
+                            </div>
+                            <div id="searchArea" :class="nightMode()">
+                                <i class="fas fa-search"></i>
+                                <input :class="nightMode()" class="search" type="text" placeholder="Cerca oinizia una nuova chat" @keyUp='filterNames' v-model='search'>
+                            </div>
+                            <div class="scrollbarContect">
+                                <div v-for='(element, index) in contacts' :class="visibility(index)" class="content" @click="chosenContact(index)" >
+                                    <div class="contactsContainer" :class="nightMode()" :class="changeColor(index)">
+                                        <img class="avatar_img" :src="'img/avatar'+element.avatar+'.png'" alt="">
+                                        <div class="nameAndLastMessage">
+                                            <strong>{{element.name}}</strong>
+                                            <p>{{element.messages[element.messages.length-1].text}}</p>
+                                            <div class="lastSeen">{{element.messages[element.messages.length-1].date}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- main right -->
+        
+                        <div class="mainRight">
+                            <div class="messagesContainerHight" :class="nightMode()">
+                                <img v-if='present == null' class="connectYourPhonePhoto" :class="nightMode()" alt="">
+                                <div v-for='(element, index) in contacts'>
+                                    <div v-if='index==present'>
+                                        <strong >
+                                            <div v-for='(message,indexMessage) in contacts[index].messages' :class="replay">
+                                                <div class="messageContainer" >
+                                                    <div v-if="element.messages[indexMessage].status==='sent'" class="sentMessage" :class="nightMode()" >
+                                                        <i class="fas fa-angle-down" @click='tooltiptext(indexMessage)' ></i>
+                                                        <ul class="tooltiptext" :class="{show:indexMessage==presentMessage}">
+                                                            <li>Options</li>
+                                                            <li @click='deleteMessage(indexMessage)'>Delete</li>
+                                                        </ul>
+                                                        {{element.messages[indexMessage].text}}
+                                                        <div class="dateAndStatus">
+                                                            {{element.messages[indexMessage].date}}
+                                                            {{element.messages[indexMessage].status}}
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div v-else="element.messages[indexMessage].status==='received'" class="receivedMessage" :class="nightMode()">
+                                                        <i class="fas fa-angle-down" @click='tooltiptext(indexMessage)' ></i>
+                                                        <ul class="tooltiptext" :class="{show:indexMessage==presentMessage}">
+                                                            <li>Options</li>
+                                                            <li @click='deleteMessage(indexMessage)'>Delete</li>
+                                                        </ul>
+                                                        {{element.messages[indexMessage].text}} 
+                                                        <div class="dateAndStatus">
+                                                            {{element.messages[indexMessage].date}}
+                                                            {{element.messages[indexMessage].status}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </strong>
+                                    </div>  
+                                </div>
+                            </div>
+                            <div class="sendMsg" :class="nightMode()">
+                                <div class="smile"><i class="far fa-smile"></i></div>
+                                <input :class="nightMode()" v-model='writeMessages' @keyup.enter='addMessage(present)' class="messageInput" placeholder="Scrivi un messaggio" type="text">
+                                <div class="microphone"><i class="fas fa-microphone"></i></div>
+                            </div>
+        
+                        </div>
                     </div>
-
-                </div>
+            
+                </main>
             </div>
-    
-        </main>
+        </div>
     </div>
+</body>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="myscript.js"></script>
-</body>
 </html>

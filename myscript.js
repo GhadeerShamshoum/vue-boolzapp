@@ -1,18 +1,25 @@
-/*Descrizione:
-Rifare l’esercizio della to do list.
-Questa volta però ogni todo sarà un oggetto, formato da due proprietà:
-- text, una stringa che indica il testo del todo
-- done, un booleano (true/false) che indica se il todo è stato fatto oppure no
-MILESTONE 1
-Stampare all’interno di una lista, un item per ogni todo.
-Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.
-MILESTONE 2
-Visualizzare a fianco ad ogni item ha una “x”: cliccando su di essa, il todo viene rimosso dalla lista.
-MILESTONE 3
-Predisporre un campo di input testuale e un pulsante “aggiungi”: cliccando sul pulsante, il testo digitato viene letto e utilizzato per creare un nuovo todo, che quindi viene aggiunto alla lista dei todo esistenti.
-Bonus:
-1- oltre al click sul pulsante, intercettare anche il tasto ENTER per aggiungere il todo alla lista
-2- cliccando sul testo dell’item, invertire il valore della proprietà done del todo corrispondente (se done era uguale a false, impostare true e viceversa) 
+/*Milestone 1
+Replica della grafica con la possibilità di avere messaggi scritti dall’utente (verdi) e
+dall’interlocutore (bianco) assegnando due classi CSS diverse
+Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare
+nome e immagine di ogni contatto
+Milestone 2
+Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i
+messaggi relativi al contatto attivo all’interno del pannello della conversazione
+Click sul contatto mostra la conversazione del contatto cliccato
+Milestone 3
+Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando
+“enter” il testo viene aggiunto al thread sopra, come messaggio verde
+Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà
+un “ok” come risposta, che apparirà dopo 1 secondo.
+Milestone 4
+Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i
+contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo
+“mar” rimangono solo Marco e Martina)
+Milestone 5 - opzionale
+Cancella messaggio: cliccando sul messaggio appare un menu a tendina che
+permette di cancellare il messaggio selezionato
+Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
 BONUS
 Funzionalità
 - evitare che l’utente possa inviare un messaggio vuoto o composto solamente da spazi
@@ -39,6 +46,7 @@ let app = new Vue({
     el: "#app",
 
     data: {
+        switchMode:false,
         present: null,
         presentMessage: null,
         writeMessages:'',
@@ -145,6 +153,26 @@ let app = new Vue({
     },
     
     methods:{
+        nightModeButton: function(){
+            if(this.switchMode===false){
+                this.switchMode=true;
+                console.log(this.switchMode)
+            }else 
+            if(this.switchMode===true){
+                this.switchMode=false;
+                console.log(this.switchMode)
+
+            }
+        },
+
+        nightMode: function(){
+            console.log('switch')
+            if(this.switchMode === true){
+                return "nightMode";
+            }
+            return "";
+        },
+
         //click (choose a contact (main-left)
         chosenContact: function(index){
             console.log(index)
@@ -186,10 +214,12 @@ let app = new Vue({
             
         },
         
-        /*Popup (messages) */
+        /*Popup (messages) options & delete */
         tooltiptext: function(indexMessage){
             this.presentMessage=indexMessage;
-            console.log(indexMessage);
+            console.log(this.presentMessage, indexMessage);
+           
+            
         },
     
         /*Delete messages */
@@ -228,7 +258,6 @@ let app = new Vue({
                    status: 'sent'  
                })
            }
-            this.scrollToEnd;
             this.writeMessages = '';
             setTimeout(this.replay, 1000);
         },
