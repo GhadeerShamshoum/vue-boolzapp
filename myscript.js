@@ -52,6 +52,7 @@ let app = new Vue({
         writeMessages:'',
         search: '',
         dt:'',
+        tooltiptextStatus:false,
 
         user:
             {
@@ -153,6 +154,12 @@ let app = new Vue({
     },
     
     methods:{
+        //go back to homepage(main screen)
+        mainScreen: function(){
+            window.location="index.html";
+        },
+        
+        //night mode (dark mode)
         nightModeButton: function(){
             if(this.switchMode===false){
                 this.switchMode=true;
@@ -161,17 +168,28 @@ let app = new Vue({
             if(this.switchMode===true){
                 this.switchMode=false;
                 console.log(this.switchMode)
-
             }
         },
 
         nightMode: function(){
-            console.log('switch')
             if(this.switchMode === true){
                 return "nightMode";
             }
             return "";
         },
+        oneClick(event) {
+            this.clicks++;
+            if (this.clicks === 1) {
+              this.timer = setTimeout( () => {
+                this.result.push(event.type);
+                this.clicks = 0
+              }, this.delay);
+            } else {
+               clearTimeout(this.timer);  
+               this.result.push('dblclick');
+               this.clicks = 0;
+            }         
+          },
 
         //click (choose a contact (main-left)
         chosenContact: function(index){
@@ -182,6 +200,7 @@ let app = new Vue({
         /*click on the contact's div ----> change color */
         changeColor: function( indexContact){
             if(indexContact == this.present){
+                console.log(indexContact, this.present, ('color'))
                 return "gray";
             }
             return "";
@@ -217,22 +236,42 @@ let app = new Vue({
         /*Popup (messages) options & delete */
         tooltiptext: function(indexMessage){
             this.presentMessage=indexMessage;
-            console.log(this.presentMessage, indexMessage);
-           
-            
+            console.log(this.presentMessage, indexMessage); 
+            if(this.tooltiptextStatus===false){
+                this.tooltiptextStatus=true;
+            }else 
+            if(this.tooltiptextStatus===true){
+                this.tooltiptextStatus=false;
+                console.log(this.tooltiptextStatus)
+            }
+
+        },
+
+        show: function(indexMessage){
+            console.log(indexMessage, this.presentMessage, 'sda')
+            if(indexMessage == this.presentMessage){
+                if(this.tooltiptextStatus === true){
+                    return "show";
+                }
+                return "";
+            }
         },
     
         /*Delete messages */
         deleteMessage: function(indexMessage){
             this.contacts[this.present].messages.splice(indexMessage, 1);
+            if (this.contacts[this.present].messages.length-1==0) {
+                this.contacts[this.present].messages.splice()
+                console.log(indexMessage ,"delete");
+                
+            }
 
         },
 
         /*write messages (send & replay) */
-        
-      
         addMessage: function(present){
-           if(this.writeMessages == '' ) return;
+           let text= this.writeMessages.trim(); 
+           if(text == '' ) return;
            if(this.contacts[this.present].date == null){
             let dt=new Date();
             let date=("0" + dt.getDate()).slice(-2);
@@ -277,6 +316,7 @@ let app = new Vue({
                 date: output,
                 text: 'ok',
                 status: 'received',
+        
                   
              })       
         },

@@ -159,6 +159,15 @@ img{
     margin: 10px;
     
 }
+
+.fa-chevron-left{
+    display: none;
+}
+
+#avatarAndName:hover .fa-chevron-left{
+    display: block;
+} 
+
 #avatarAndName{
     display: flex;
     align-items: center;
@@ -286,8 +295,9 @@ input.nightMode{
  
 
 .gray{
-    background-color: rgb(235, 232, 232);
+    background-color: rgba(235, 232, 232, 0.507);
 }
+
 
 .nameAndLastMessage{
     display: flex;
@@ -402,16 +412,6 @@ input.nightMode{
     color: black;
 }
 
-.sentMessage ::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -12px;
-    width: 20px;
-    height: 20px;
-    background-color: linear-gradient(135deg, rgb(207, 247, 207) 0%, rgb(207, 247, 207) 50%, transparent 50%, transparent );
-}
-
 
 .receivedMessage{
     float: left;
@@ -451,7 +451,7 @@ input.nightMode{
   }
 
   /* Show the tooltip text when you mouse over the tooltip container */
-.tooltiptext.show {
+.show {
     visibility: visible;
   }
 

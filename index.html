@@ -36,6 +36,7 @@
                             <div class="nameAndIconContainer">
                                 <div v-for='(element, index) in contacts' class="showContact" :class="isPresent(index)" >
                                     <div id="avatarAndName"> 
+                                        <i @click='mainScreen()' class="fas fa-chevron-left"></i>
                                         <img class="avatar_img" :src="'img/avatar'+element.avatar+'.png'" alt="">
                                         <div>
                                             <div><strong>{{contacts[index].name}}</strong></div>
@@ -72,19 +73,21 @@
                             </div>
                             <div class="scrollbarContect">
                                 <div v-for='(element, index) in contacts' :class="visibility(index)" class="content" @click="chosenContact(index)" >
-                                    <div class="contactsContainer" :class="nightMode()" :class="changeColor(index)">
-                                        <img class="avatar_img" :src="'img/avatar'+element.avatar+'.png'" alt="">
-                                        <div class="nameAndLastMessage">
-                                            <strong>{{element.name}}</strong>
-                                            <p>{{element.messages[element.messages.length-1].text}}</p>
-                                            <div class="lastSeen">{{element.messages[element.messages.length-1].date}}</div>
+                                    <div class="contactsContainer" :class="nightMode()" >
+                                        <div class="contactsContainer" :class="changeColor(index)" >
+                                            <img class="avatar_img" :src="'img/avatar'+element.avatar+'.png'" alt="">
+                                            <div class="nameAndLastMessage">
+                                                <strong>{{element.name}}</strong>
+                                                <p>{{element.messages[element.messages.length-1].text}}</p>
+                                                <div class="lastSeen">{{element.messages[element.messages.length-1].date}}</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- main right -->
-        
                         <div class="mainRight">
                             <div class="messagesContainerHight" :class="nightMode()">
                                 <img v-if='present == null' class="connectYourPhonePhoto" :class="nightMode()" alt="">
@@ -95,7 +98,7 @@
                                                 <div class="messageContainer" >
                                                     <div v-if="element.messages[indexMessage].status==='sent'" class="sentMessage" :class="nightMode()" >
                                                         <i class="fas fa-angle-down" @click='tooltiptext(indexMessage)' ></i>
-                                                        <ul class="tooltiptext" :class="{show:indexMessage==presentMessage}">
+                                                        <ul class="tooltiptext" :class="show(indexMessage)">
                                                             <li>Options</li>
                                                             <li @click='deleteMessage(indexMessage)'>Delete</li>
                                                         </ul>
@@ -108,7 +111,7 @@
                                                     </div>
                                                     <div v-else="element.messages[indexMessage].status==='received'" class="receivedMessage" :class="nightMode()">
                                                         <i class="fas fa-angle-down" @click='tooltiptext(indexMessage)' ></i>
-                                                        <ul class="tooltiptext" :class="{show:indexMessage==presentMessage}">
+                                                        <ul class="tooltiptext" :class="show(indexMessage)">
                                                             <li>Options</li>
                                                             <li @click='deleteMessage(indexMessage)'>Delete</li>
                                                         </ul>
